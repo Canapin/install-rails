@@ -49,8 +49,9 @@ log_info "Installing Redis ..."
   cd /tmp && \
     rm redis-stable.tar.gz && \
     rm -Rf redis-stable
-
-  redis-server --daemonize yes
+  sudo cp /tmp/redis-stable/utils/redis_init_script /etc/init.d/redis_6379
+  sudo chmod +x /etc/init.d/redis_6379
+  sudo update-rc.d redis_6379 defaults
 
 log_info "Installing ImageMagick ..."
   sudo -E apt-get -y install libtool
